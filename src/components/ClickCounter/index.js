@@ -1,11 +1,14 @@
 // Write your code here
-import './index.css'
 import {Component} from 'react'
+
+import './index.css'
 
 class Counter extends Component {
   state = {count: 0}
   onIncrement = () => {
-    this.setState(preState => ({count: preState.count + 1}))
+    this.setState(prevState => {
+      return {count: prevState.count + 1}
+    })
   }
 
   render() {
@@ -14,13 +17,12 @@ class Counter extends Component {
       <div className="bg-container">
         <h1 className="heading">
           The Button has been clicked{' '}
-          <span className="counter-design" onClick={this.onIncrement}>
-            {count}
-          </span>{' '}
-          times
+          <span className="counter-design">{count}</span> times
         </h1>
         <p className="para">Click the button to increase the count</p>
-        <button className="btn">click me</button>
+        <button type="button" className="btn" onClick={this.onIncrement}>
+          click me
+        </button>
       </div>
     )
   }
